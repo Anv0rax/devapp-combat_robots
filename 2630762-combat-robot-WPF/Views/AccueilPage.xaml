@@ -1,0 +1,28 @@
+﻿<Page x:Class="_2630762_combat_robot_wpf.Views.AccueilPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d"
+      Title="Accueil"
+      d:DesignHeight="380" 
+      d:DesignWidth="850">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="250">
+            <TextBlock Text="Combat de robots" FontSize="24" HorizontalAlignment="Center" Margin="0, 0, 0, 5"/>
+            <TextBlock Text="Choisissez votre rôle" FontSize="16" HorizontalAlignment="Center" Margin="0, 0, 0, 15"/>
+            <Button Height="50" Margin="0, 0, 0, 10" Click="JouerServeur_Button_Click">
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <TextBlock FontSize="14" HorizontalAlignment="Center">Serveur</TextBlock>
+                    <TextBlock FontSize="12" HorizontalAlignment="Center">Héberger une partie</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Height="50" Margin="0, 0, 0, 10" Click="JouerClient_Button_Click">
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <TextBlock FontSize="14" HorizontalAlignment="Center">Client</TextBlock>
+                    <TextBlock FontSize="12" HorizontalAlignment="Center">Se connecter à un serveur</TextBlock>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,55 @@
+tour par tour :
+
+client joue, envoie au serveur 
+
+serveur traite, serveur joue
+
+serveur envoie au client
+
+on recommence
+
+
+
+
+du coup, tu as un propriété defensetemporaire et tu le compte dans prendreDégats ? 
+avec un :
+ArmureTemporaire {get; set;} = 0
+
+
+Defendre()
+{
+  ArmureTemporaire = 10;
+}
+
+et à chaque tour : ArmureTemporaire = 0;
+
+
+
+classe à côté : Système
+
+- Saisir int
+- Afficher Partie
+- SaisirConfigRobot : return (pv : Integer, armure : Integer, degats : Integer)
+
+- SaisirIP
+- JouerAction
+
+- AfficherEnAttente
+
+
+
+Dans joueur :
+ConfigRobot doit être abstraite et sans paramètres
+
+Serveur : config le robot avec SaisirConfigRobot et attendre le client, puis créer les deux robots et la partie
+
+Client : config le robot avec SaisirConfigRobot puis transmettre au serveur
+
+
+
+Dans serveur :
+
+Ajouter "RecevoirAction" le serveur reçoit l'action du client, utilise la méthode VerifAction, si action valide, met à jour les robots et statut == 1 sinon statut ==  -11
+Ajouter "RecevoirConfigClient" qui utilise la méthode de la classe Robot
+Ajouter "JouerTourServeur" où le serveur réalise son action et met à jour les robots
+Enlever dans TransmettreMiseAJour : ne return pas de int mais envoie la partie par le socket
