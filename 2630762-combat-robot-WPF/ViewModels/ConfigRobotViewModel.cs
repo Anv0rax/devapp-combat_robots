@@ -85,7 +85,7 @@ namespace _2630762_combat_robot_wpf.ViewModels
                         });
                     }
                 }
-                catch (SocketException socex)
+                catch (SocketException)
                 {
                     Application.Current.Dispatcher.Invoke(() =>
                     {
@@ -115,7 +115,7 @@ namespace _2630762_combat_robot_wpf.ViewModels
             thread.Start();
         }
 
-        private void GererBug()
+        public void GererBug()
         {
             if (AppData.instanceServeur != null)
             {
@@ -128,4 +128,6 @@ namespace _2630762_combat_robot_wpf.ViewModels
             }
         }
     }
+
+ 
 }
