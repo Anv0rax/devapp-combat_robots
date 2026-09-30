@@ -14,7 +14,7 @@
             <TextBlock Text="Votre robot" FontSize="20" FontWeight="DemiBold" Margin="0,0,0,10" />
             <TextBlock Text="{Binding RobotJoueur.Pv, StringFormat='PV : {0}'}" FontSize="16" Margin="0, 2" />
             <TextBlock Text="{Binding RobotJoueur.Armure, StringFormat='Armure : {0}'}" FontSize="16" Margin="0, 2" />
-            <TextBlock Text="{Binding RobotJoueur.Force, StringFormat='Force : {0}'}" FontSize="16" Margin="0, 2" />
+            <TextBlock Text="{Binding RobotJoueur.Degats, StringFormat='Degats : {0}'}" FontSize="16" Margin="0, 2" />
             <TextBlock Text="{Binding RobotJoueur.Energie, StringFormat='Énergie : {0}'}" FontSize="16" Margin="0, 2" />
         </StackPanel>
 
@@ -36,7 +36,7 @@
             <TextBlock Text="Robot adverse" FontSize="20" FontWeight="DemiBold" Margin="0,0,0,10" />
             <TextBlock Text="{Binding RobotAdverse.Pv, StringFormat='PV : {0}'}" FontSize="16" Margin="0, 2" />
             <TextBlock Text="{Binding RobotAdverse.Armure, StringFormat='Armure : {0}'}" FontSize="16" Margin="0, 2" />
-            <TextBlock Text="{Binding RobotAdverse.Force, StringFormat='Force : {0}'}" FontSize="16" Margin="0, 2" />
+            <TextBlock Text="{Binding RobotAdverse.Degats, StringFormat='Degats : {0}'}" FontSize="16" Margin="0, 2" />
             <TextBlock Text="{Binding RobotAdverse.Energie, StringFormat='Énergie : {0}'}" FontSize="16" Margin="0, 2" />
         </StackPanel>
     </StackPanel>

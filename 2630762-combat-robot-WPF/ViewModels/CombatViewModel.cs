@@ -29,7 +29,7 @@ namespace _2630762_combat_robot_wpf.ViewModels
 
             PartieEnCours = AppData.instanceClient?.Partie ?? AppData.instanceServeur?.Partie;
 
-            if(PartieEnCours == null || PartieEnCours.Statut == -10)
+            if(PartieEnCours == null || PartieEnCours.Status == -10)
             {
                 pageAssociee.NavigationService.Navigate(new ConfigRobotPage());
             }
@@ -123,7 +123,7 @@ namespace _2630762_combat_robot_wpf.ViewModels
                             PartieEnCours = JoueurLocal?.Partie;
                             PartieEnCours.RobotServeur.ArmureTemporaire = 0;
                             PartieEnCours.RobotClient.ArmureTemporaire = 0;
-                            switch (PartieEnCours.Statut)
+                            switch (PartieEnCours.Status)
                             {
                                 case -11:
                                     ActionsActives = true;
@@ -143,6 +143,11 @@ namespace _2630762_combat_robot_wpf.ViewModels
                                     break;
                             }
                         });
+                    }
+                    catch (SocketException)
+                    {
+                        AppData.AccueilServVM.RelancerHebergement();
+                        pageAssociee.NavigationService.Navigate(AppData.AccueilServPage);
                     }
                     catch (Exception ex)
                     {

@@ -47,18 +47,18 @@ namespace _2630762_combat_robot_wpf.Models
 
         public void RecevoirAction()
         {
-            byte[] buffer = new byte[4];
+            byte[] buffer = new byte[1];
             int received = Socket!.Receive(buffer, SocketFlags.None);
 
             int action = BitConverter.ToInt32(buffer, 0);
             if (VerifAction(action))
             {
                 AppliquerAction(false, action);
-                Partie!.Statut = 1;
+                Partie!.Status = 1;
             }
             else
             {
-                Partie!.Statut = -11;
+                Partie!.Status = -11;
             }
         }
 
@@ -69,10 +69,10 @@ namespace _2630762_combat_robot_wpf.Models
                 switch (action)
                 {
                     case 1:
-                        Partie!.RobotClient!.SubirDegat(Partie!.RobotServeur!.Force, false);
+                        Partie!.RobotClient!.SubirDegat(Partie!.RobotServeur!.Degats, false);
                         break;
                     case 2:
-                        Partie!.RobotClient!.SubirDegat(Partie!.RobotServeur!.Force, true);
+                        Partie!.RobotClient!.SubirDegat(Partie!.RobotServeur!.Degats, true);
                         break;
                     case 3:
                         Partie!.RobotServeur!.Defendre();
@@ -87,10 +87,10 @@ namespace _2630762_combat_robot_wpf.Models
                 switch (action)
                 {
                     case 1:
-                        Partie!.RobotServeur!.SubirDegat(Partie!.RobotClient!.Force, false);
+                        Partie!.RobotServeur!.SubirDegat(Partie!.RobotClient!.Degats, false);
                         break;
                     case 2:
-                        Partie!.RobotServeur!.SubirDegat(Partie!.RobotClient!.Force, true);
+                        Partie!.RobotServeur!.SubirDegat(Partie!.RobotClient!.Degats, true);
                         break;
                     case 3:
                         Partie!.RobotClient!.Defendre();
@@ -112,20 +112,20 @@ namespace _2630762_combat_robot_wpf.Models
             {
                 resultat &= Partie.RobotServeur.Energie >= 50;
             }
-            if (Partie!.Statut != -11 && resultat)
+            if (Partie!.Status != -11 && resultat)
             {
                 AppliquerAction(true, action);
             }
             else
-                Partie!.Statut = -11;
+                Partie!.Status = -11;
         }
 
         public void TransmettreMiseAJour()
         {
             if (Partie.RobotServeur.Pv < 1)
-                Partie.Statut = -1;
+                Partie.Status = -1;
             if (Partie.RobotClient.Pv < 1)
-                Partie.Statut = -2;
+                Partie.Status = -2;
             string json = JsonSerializer.Serialize(Partie);
             byte[] bytes = Encoding.UTF8.GetBytes(json);
             Socket!.Send(bytes, SocketFlags.None);
@@ -157,7 +157,7 @@ namespace _2630762_combat_robot_wpf.Models
             (int pv, int armure, int force) = Systeme.SaisirConfigRobot();
             if (Robot.VerifierPtConfig(pv, armure, force))
             {
-                Partie ??= new Partie();
+                Partie ??= new Partie(2);
                 Partie.RobotServeur = new Robot(pv, armure, force);
             }
             else throw new ArgumentException("Configuration Invalide");
@@ -166,7 +166,7 @@ namespace _2630762_combat_robot_wpf.Models
 
         public void RecevoirConfigClient()
         {
-            Partie ??= new Partie();
+            Partie ??= new Partie(2);
 
             byte[] buffer = new byte[1024];
             int received = Socket!.Receive(buffer);
@@ -179,10 +179,11 @@ namespace _2630762_combat_robot_wpf.Models
             if (Robot.VerifierPtConfig(pv, armure, force))
             {
                 Partie!.RobotClient = new Robot(pv, armure, force);
+                Partie.Status = 1;
             }
             else
             {
-                Partie!.Statut = -10;
+                Partie!.Status = -10;
             }
         }
 

@@ -27,9 +27,9 @@
                 </StackPanel>
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">
                     <TextBlock TextAlignment="Center"  FontSize="20">
-                        Force
+                        Degats
                     </TextBlock>
-                    <TextBox TextAlignment="Center" FontSize="30" Width="80" Text="{Binding ForceInput, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox TextAlignment="Center" FontSize="30" Width="80" Text="{Binding DegatsInput, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
             </StackPanel>
             <Button Height="30" FontSize="18" Click="ConfirmRobot_Button_Click">Confirmer</Button>

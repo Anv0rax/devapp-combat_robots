@@ -24,7 +24,7 @@ namespace _2630762_combat_robot_wpf.Models
 
         public void EnvoyerAction(int typeAction)
         {
-            byte[] msg = BitConverter.GetBytes(typeAction);
+            byte[] msg = { (byte)typeAction };
             Socket!.Send(msg, SocketFlags.None);
         }
 

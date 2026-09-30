@@ -66,7 +66,7 @@ namespace _2630762_combat_robot_wpf.ViewModels
         {
             Partie? partie = AppData.instanceClient?.Partie ?? AppData.instanceServeur?.Partie;
 
-            if ((partie.Statut == -2 && EstServeur) || (partie.Statut == -1 && EstClient))
+            if ((partie.Status == -2 && EstServeur) || (partie.Status == -1 && EstClient))
             {
                 Titre = "Victoire !";
                 SousTitre = "Votre robot est sorti vainqueur du combat.";

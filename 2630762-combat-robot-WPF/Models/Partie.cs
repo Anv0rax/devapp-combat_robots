@@ -6,7 +6,7 @@ namespace _2630762_combat_robot_wpf.Models
 {
     public class Partie
     {
-        public int Statut { get; set; }
+        public int Status { get; set; } = 2;
 
         public Robot? RobotServeur { get; set; }
 
@@ -14,12 +14,12 @@ namespace _2630762_combat_robot_wpf.Models
 
         public Partie(int statut)
         {
-            Statut = statut;
+            Status = statut;
         }
 
         public Partie(int statut, Robot robotServeur, Robot robotClient)
         {
-            Statut = statut;
+            Status = statut;
             RobotServeur = robotServeur;
             RobotClient = robotClient;
         }

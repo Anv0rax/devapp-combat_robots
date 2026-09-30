@@ -27,13 +27,13 @@ namespace _2630762_combat_robot_wpf.ViewModels
 
         private int forceInput = 0;
 
-        public int ForceInput
+        public int DegatsInput
         {
             get => forceInput;
             set
             {
                 forceInput = value;
-                OnPropertyChanged("ForceInput");
+                OnPropertyChanged("DegatsInput");
             }
         }
 
@@ -50,7 +50,7 @@ namespace _2630762_combat_robot_wpf.ViewModels
         }
 
         public (int, int, int) InfoInputRobot()
-            => (VieInput, ArmureInput, ForceInput);
+            => (VieInput, ArmureInput, DegatsInput);
 
         public void EnvoyerRobot()
         {
@@ -89,15 +89,7 @@ namespace _2630762_combat_robot_wpf.ViewModels
                 {
                     Application.Current.Dispatcher.Invoke(() =>
                     {
-                        if (AppData.instanceServeur != null)
-                        {
-                            pageAssociee.NavigationService.Navigate(AppData.AccueilServPage);
-                            AppData.AccueilServVM.RelancerHebergement();
-                        }
-                        else
-                        {
-                            pageAssociee.NavigationService.Navigate(new AccueilPage());
-                        }
+                        GererBug();
                     });
                 }
                 catch (Exception ex)
@@ -112,7 +104,7 @@ namespace _2630762_combat_robot_wpf.ViewModels
                         Thread.Sleep(2000);
                         Application.Current.Dispatcher.Invoke(() =>
                         {
-                            //ErreurMessage = "";
+                            GererBug();
                         });
                     });
                     errorThread.IsBackground = true;
@@ -121,6 +113,19 @@ namespace _2630762_combat_robot_wpf.ViewModels
             });
             thread.IsBackground = true;
             thread.Start();
+        }
+
+        private void GererBug()
+        {
+            if (AppData.instanceServeur != null)
+            {
+                pageAssociee.NavigationService.Navigate(AppData.AccueilServPage);
+                AppData.AccueilServVM.RelancerHebergement();
+            }
+            else
+            {
+                pageAssociee.NavigationService.Navigate(new AccueilPage());
+            }
         }
     }
 }

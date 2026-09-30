@@ -8,7 +8,7 @@ namespace _2630762_combat_robot_wpf.Models
     {
         public int Pv { get; set; } = 100;
         public int Armure { get; set; } = 0;
-        public int Force { get; set; } = 10;
+        public int Degats { get; set; } = 10;
         public int Energie { get; set; } = 0;
         public int ArmureTemporaire { get; set; } = 0;
 
@@ -33,9 +33,9 @@ namespace _2630762_combat_robot_wpf.Models
         {
             int verifPv = (Pv - 100)/10;
             int verifArmure = Armure/2;
-            int verifForce = Force/2;
+            int verifDegats = Degats/2;
 
-            return (verifPv+verifArmure+verifForce) == 10;
+            return (verifPv+verifArmure+verifDegats) == 10;
         }
 
         public static bool VerifierPtConfig(int a, int b, int c)
@@ -54,13 +54,13 @@ namespace _2630762_combat_robot_wpf.Models
         {
             Pv = _pv;
             Armure = _armure;
-            Force = _force;
+            Degats = _force;
             Energie = _energie;
         }
 
-        public Robot(int ptPv, int ptArmure, int ptForce)
+        public Robot(int ptPv, int ptArmure, int ptDegats)
         {
-            if (!VerifierPtConfig(ptPv, ptArmure, ptForce))
+            if (!VerifierPtConfig(ptPv, ptArmure, ptDegats))
                 throw new ArgumentException("Configuration invalide");
             for (int i = 0; i < ptPv; i++)
                 Pv += 10;
@@ -68,8 +68,8 @@ namespace _2630762_combat_robot_wpf.Models
             for (int i = 0; i < ptArmure; i++)
                 Armure += 2;
 
-            for (int i = 0; i < ptForce; i++)
-                Force += 2;
+            for (int i = 0; i < ptDegats; i++)
+                Degats += 2;
         }
     }
 }
