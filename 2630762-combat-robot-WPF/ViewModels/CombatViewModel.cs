@@ -144,25 +144,32 @@ namespace _2630762_combat_robot_wpf.ViewModels
                             }
                         });
                     }
-                    catch (SocketException)
+                    catch (Exception)
                     {
-                        AppData.AccueilServVM.RelancerHebergement();
-                        pageAssociee.NavigationService.Navigate(AppData.AccueilServPage);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageStatut = $"{ex.Message}";
+                        if (EstServeur)
+                        {
+                            AppData.AccueilServVM.RelancerHebergement();
+                            pageAssociee.NavigationService.Navigate(AppData.AccueilServPage);
+                        }
+                        else
+                        {
+                            pageAssociee.NavigationService.Navigate(new AccueilPage());
+                        }
                     }
                 });
                 thread.IsBackground = true;
                 thread.Start();
             }
-            catch(SocketException)
+            catch(Exception)
             {
                 if (EstServeur)
                 {
                     AppData.AccueilServVM.RelancerHebergement();
                     pageAssociee.NavigationService.Navigate(AppData.AccueilServPage);
+                }
+                else
+                {
+                    pageAssociee.NavigationService.Navigate(new AccueilPage());
                 }
             }
         }
@@ -171,7 +178,7 @@ namespace _2630762_combat_robot_wpf.ViewModels
         {
             Thread thread = new Thread(() =>
             {
-                Thread.Sleep(2000);
+                Thread.Sleep(500);
                 Application.Current.Dispatcher.Invoke(() =>
                 {
                     pageAssociee.NavigationService.Navigate(new FinDeJeuPage());

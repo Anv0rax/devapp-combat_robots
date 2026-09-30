@@ -189,7 +189,7 @@ namespace _2630762_combat_robot_wpf.Models
 
         public int RecevoirDecision()
         {
-            byte[] buffer = new byte[4];
+            byte[] buffer = new byte[1];
             int received = Socket!.Receive(buffer, SocketFlags.None);
 
             if (received == 0)

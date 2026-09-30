@@ -51,7 +51,7 @@ namespace _2630762_combat_robot_wpf.Models
 
         public void EnvoyerDecision(int decision)
         {
-            byte[] msg = BitConverter.GetBytes(decision);
+            byte[] msg = { (byte)decision };
             Socket!.Send(msg, SocketFlags.None);
         }
     }
