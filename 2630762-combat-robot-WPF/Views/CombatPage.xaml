@@ -1,0 +1,50 @@
+﻿<Page x:Class="_2630762_combat_robot_wpf.Views.CombatPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:_2630762_combat_robot_wpf.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Combat de robots - Partie en cours...">
+
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Margin="10"  >
+                <TextBlock Text="Votre robot" FontSize="20" FontWeight="DemiBold" Margin="0,0,0,10" />
+                <TextBlock Text="{Binding RobotJoueur.Pv, StringFormat='PV : {0}'}" FontSize="16" Margin="0, 2" />
+                <TextBlock Text="{Binding RobotJoueur.Armure, StringFormat='Armure : {0}'}" FontSize="16" Margin="0, 2" />
+                <TextBlock Text="{Binding RobotJoueur.Degats, StringFormat='Dégats : {0}'}" FontSize="16" Margin="0, 2" />
+                <TextBlock Text="{Binding RobotJoueur.Energie, StringFormat='Énergie : {0}'}" FontSize="16" Margin="0, 2" />
+                <TextBlock Text="{Binding RobotJoueur.Dexterite, StringFormat='Dextérité : {0}'}" FontSize="16" Margin="0, 2" />
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5">
+                <TextBlock Text="{Binding MessageStatut}" FontSize="16" Foreground="Red" Width="200"
+                            HorizontalAlignment="Center" Margin="0,0,0,10" TextWrapping="Wrap" TextAlignment="Center" />
+
+                <Button Content="Attaquer" Width="160" Height="20" Margin="0,4"
+                        Click="Attaquer_Click" IsEnabled="{Binding ActionsActives}" />
+                <Button Content="Attaque puissante" Width="160" Height="20" Margin="0,4"
+                        Click="AttaquePuissante_Click" IsEnabled="{Binding ActionsActives}" />
+                <Button Content="Défendre" Width="160" Height="20" Margin="0,4"
+                        Click="Defendre_Click" IsEnabled="{Binding ActionsActives}" />
+                <Button Content="Recharger" Width="160" Height="20" Margin="0,4"
+                        Click="Recharger_Click" IsEnabled="{Binding ActionsActives}" />
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Margin="10" >
+                <TextBlock Text="Robot adverse" FontSize="20" FontWeight="DemiBold" Margin="0,0,0,10" />
+                <TextBlock Text="{Binding RobotAdverse.Pv, StringFormat='PV : {0}'}" FontSize="16" Margin="0, 2" />
+                <TextBlock Text="{Binding RobotAdverse.Armure, StringFormat='Armure : {0}'}" FontSize="16" Margin="0, 2" />
+                <TextBlock Text="{Binding RobotAdverse.Degats, StringFormat='Dégats : {0}'}" FontSize="16" Margin="0, 2" />
+                <TextBlock Text="{Binding RobotAdverse.Energie, StringFormat='Énergie : {0}'}" FontSize="16" Margin="0, 2" />
+                <TextBlock Text="{Binding RobotAdverse.Dexterite, StringFormat='Dextérité : {0}'}" FontSize="16" Margin="0, 2" />
+            </StackPanel>
+        </StackPanel>
+
+        <TextBlock Text="{Binding MessageAction}" FontSize="16" LineHeight="2"
+                        HorizontalAlignment="Center" Margin="0,10,0,10" TextWrapping="Wrap" TextAlignment="Center"/>
+    </StackPanel>
+</Page>

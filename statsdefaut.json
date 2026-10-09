@@ -1,0 +1,26 @@
+{
+    "pointsConfig" : 10,
+
+    "pvDefaut" : 100,
+    "ratioPv" : 10,
+
+    "armureDefaut" : 0,
+    "ratioArmure" : 2,
+
+    "degatsDefaut" : 10,
+    "ratioDegats" : 2,
+
+    "energieDefaut" : 0,
+
+    "dexteriteDefaut" : 0,
+    "ratioDexterite" : 1,
+
+    "enerigePourPuissante" : 50,
+    "bonusPuissante" : 2,
+
+    "bonusArmureTempo" : 10,
+
+    "probaAttaque" : 75,
+    "probaPuissante" : 50,
+    "probaDefense" : 75
+}
